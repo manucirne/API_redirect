@@ -10,9 +10,9 @@ api = Api(app)
 ip_saida = os.environ["IP_REDIRECT"]
 print(ip_saida)
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def catch_all(path, methods = ['GET', 'POST', 'PUT', 'DELETE']):
+@app.route('/', defaults={'path': ''},methods = ['GET', 'POST', 'PUT', 'DELETE'])
+@app.route('/<path:path>',methods = ['GET', 'POST', 'PUT', 'DELETE'])
+def catch_all(path):
     print("entrou na função")
     if request.method == 'POST':
         req = requests.post(ip_saida + '/' + path, data = request.get_json())
