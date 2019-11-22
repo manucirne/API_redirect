@@ -15,22 +15,22 @@ print(ip_saida)
 def catch_all(path):
     print("entrou na função")
     if request.method == 'POST':
-        req = requests.post(ip_saida + ':8080' + '/' + path, data = request.get_json())
+        req = requests.post('http://' + ip_saida + ':8080' + '/' + path, data = request.get_json())
         return req.content
     elif request.method == 'PUT':
-        req = requests.put(ip_saida + ':8080' + '/' + path, data = request.get_json())
+        req = requests.put('http://' + ip_saida + ':8080' + '/' + path, data = request.get_json())
         return req.content
     elif request.method == 'DELETE':
-        req = requests.delete(ip_saida + ':8080' + '/' + path)
+        req = requests.delete('http://' + ip_saida + ':8080' + '/' + path)
         return req.content
     elif request.method == 'GET':
         print("entrou no GET")
-        req = requests.get(ip_saida + ':8080' + '/' + path)
+        req = requests.get('http://' + ip_saida + ':8080' + '/' + path)
         return req.content
 
 @app.route('/healthcheck')
 def hc():
-    return '',200
+    return '<3',200
 
 
 if __name__ == '__main__':
