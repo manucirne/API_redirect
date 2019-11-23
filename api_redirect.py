@@ -14,10 +14,10 @@ print(ip_saida)
 @app.route('/<path:path>',methods = ['GET', 'POST', 'PUT', 'DELETE'])
 def catch_all(path):
     if request.method == 'POST':
-        req = requests.post('http://' + ip_saida + ':8080' + '/' + path,  headers=request.header,  json=request.get_json())
+        req = requests.post('http://' + ip_saida + ':8080' + '/' + path,  headers=request.headers,  json=request.get_json())
         return req.content
     elif request.method == 'PUT':
-        req = requests.put('http://' + ip_saida + ':8080' + '/' + path, headers=request.header,  json=request.get_json())
+        req = requests.put('http://' + ip_saida + ':8080' + '/' + path, headers=request.headers,  json=request.get_json())
         return req.content
     elif request.method == 'DELETE':
         req = requests.delete('http://' + ip_saida + ':8080' + '/' + path)
